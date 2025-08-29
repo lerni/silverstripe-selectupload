@@ -6,7 +6,7 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Security\Permission;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 use SilverStripe\View\Requirements;
 use SilverStripe\Assets\Folder;
 use SilverStripe\Assets\File;
@@ -44,7 +44,7 @@ class SelectUploadField extends UploadField
      */
     protected $canSelectFolder = true;
 
-    public function __construct($name, $title = null, SS_List $items = null)
+    public function __construct($name, $title = null, ?SS_List $items = null)
     {
         parent::__construct($name, $title, $items);
         $this->selectField = FolderDropdownField::create("{$name}/folder");
