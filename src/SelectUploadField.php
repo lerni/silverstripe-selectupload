@@ -50,7 +50,7 @@ class SelectUploadField extends UploadField
         $this->selectField = FolderDropdownField::create("{$name}/folder");
 
         // If we haven't uploaded to a folder yet, set to the default foldername
-        if (!$this->selectField->Value()) {
+        if (!$this->selectField->getValue()) {
             $folderID = $this->folderIDFromPath($this->getDefaultFolderName());
             if ($folderID) {
                 $this->selectField->setValue($folderID);
@@ -240,7 +240,7 @@ class SelectUploadField extends UploadField
     {
         // Ensure that, if this member is allowed, the persistant folder overrides any default set
         if ($this->getCanSelectFolder()) {
-            $path = $this->folderPathFromID($this->selectField->Value());
+            $path = $this->folderPathFromID($this->selectField->getValue());
             if ($path !== false) {
                 return $path;
             }
